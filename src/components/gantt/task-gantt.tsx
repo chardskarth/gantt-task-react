@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { GridProps, Grid } from "../grid/grid";
 import { CalendarProps, Calendar } from "../calendar/calendar";
 import { TaskGanttContentProps, TaskGanttContent } from "./task-gantt-content";
@@ -25,13 +25,13 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   const verticalGanttContainerRef = useRef<HTMLDivElement>(null);
   const newBarProps = { ...barProps, svg: ganttSVGRef };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (horizontalContainerRef.current) {
       horizontalContainerRef.current.scrollTop = scrollY;
     }
   }, [scrollY]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (verticalGanttContainerRef.current) {
       verticalGanttContainerRef.current.scrollLeft = scrollX;
     }

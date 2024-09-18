@@ -113,6 +113,7 @@ export interface StylingOption {
   arrowColor?: string;
   arrowIndent?: number;
   todayColor?: string;
+  hideTaskListDates: boolean;
   TooltipContent?: React.FC<{
     task: Task;
     fontSize: string;
@@ -132,6 +133,7 @@ export interface StylingOption {
     locale: string;
     tasks: Task[];
     selectedTaskId: string;
+    hideTaskListDates: boolean;
     /**
      * Sets selected task by id
      */

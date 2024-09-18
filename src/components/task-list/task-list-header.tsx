@@ -6,7 +6,8 @@ export const TaskListHeaderDefault: React.FC<{
   rowWidth: string;
   fontFamily: string;
   fontSize: string;
-}> = ({ headerHeight, fontFamily, fontSize, rowWidth }) => {
+  hideTaskListDates: boolean,
+}> = ({ headerHeight, fontFamily, fontSize, rowWidth, hideTaskListDates }) => {
   return (
     <div
       className={styles.ganttTable}
@@ -29,7 +30,8 @@ export const TaskListHeaderDefault: React.FC<{
         >
           &nbsp;Name
         </div>
-        <div
+        {!hideTaskListDates && <>
+          <div
           className={styles.ganttTable_HeaderSeparator}
           style={{
             height: headerHeight * 0.5,
@@ -59,6 +61,7 @@ export const TaskListHeaderDefault: React.FC<{
         >
           &nbsp;To
         </div>
+          </>}
       </div>
     </div>
   );

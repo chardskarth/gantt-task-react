@@ -214,6 +214,16 @@ export const Calendar: React.FC<CalendarProps> = ({
     return [topValues, bottomValues];
   };
 
+  const formatDateForBottomValueForDay = (date, locale) =>
+    `${getLocalDayOfWeek(date, locale, "short")}, ${date
+      .getDate()
+      .toString()}`
+
+  const formatDateForBottomValueForDayInShortest = (date, locale) =>
+    `${date
+      .getDate()
+      .toString()}`
+
   const getCalendarValuesForDay = () => {
     const topValues: ReactChild[] = [];
     const bottomValues: ReactChild[] = [];
@@ -221,9 +231,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     const dates = dateSetup.dates;
     for (let i = 0; i < dates.length; i++) {
       const date = dates[i];
-      const bottomValue = `${getLocalDayOfWeek(date, locale, "short")}, ${date
-        .getDate()
-        .toString()}`;
+      const bottomValue = formatDateForBottomValueForDayInShortest(date, locale);
 
       bottomValues.push(
         <text
@@ -251,8 +259,8 @@ export const Calendar: React.FC<CalendarProps> = ({
             xText={
               columnWidth * (i + 1) -
               getDaysInMonth(date.getMonth(), date.getFullYear()) *
-                columnWidth *
-                0.5
+              columnWidth *
+              0.5
             }
             yText={topDefaultHeight * 0.9}
           />

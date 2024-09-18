@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { EventOption } from "../../types/public-types";
 import { BarTask } from "../../types/bar-task";
 import { Arrow } from "../other/arrow";
@@ -72,7 +72,7 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
     setXStep(newXStep);
   }, [columnWidth, dates, timeStep]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleMouseMove = async (event: MouseEvent) => {
       if (!ganttEvent.changedTask || !point || !svg?.current) return;
       event.preventDefault();
